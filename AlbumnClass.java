@@ -11,10 +11,10 @@ public class AlbumClass {
 
     //Storing information on the album//
     private String albumName
-    private String song1 
-    private String song2 
-    private String song3 
-    private String song4 
+    private new song = song1 
+    private new song = song2 
+    private new song = song3 
+    private new song = song4 
     private int albumTime
     private int maxAlbumTime = 1200
 
