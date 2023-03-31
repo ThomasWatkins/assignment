@@ -1,4 +1,4 @@
-/*album Class
+/*Album Class
  *Author: Thomas Watkins
  *Student No: 3442737
  *Date Started: 27/3/23
