@@ -42,24 +42,74 @@ public class AlbumClass {
     {
         return albumName 
     }
-
-    //add a song
-    public void addSong (int i, int addedSong)
-    {
-    if (i == 1) song1 = addedSong;
-    else if (i == 2) song2 = addedSong;
-    else if (i == 3) song3 = addedSong;
-    else song4 = addedSong
+    //add song + error messages ---------------------------
+    public void addSong(SongClass song) {
+    // Check if the album already has four songs
+    if (song1 != null && song2 != null && song3 != null && song4 != null) {
+        System.out.println("Error: This album already has the maximum number of songs.");
+        return;
     }
 
-    //get song list
-    public String getSongList ()
-    {
-        return song1
-        return song2
-        return song3
-        return song4
+    // Check if adding the new song will exceed the 20-minute limit
+    int totalDuration = 0;
+    if (song1 != null) totalDuration += song1.getSongDuration();
+    if (song2 != null) totalDuration += song2.getSongDuration();
+    if (song3 != null) totalDuration += song3.getSongDuration();
+    if (song4 != null) totalDuration += song4.getSongDuration();
+    totalDuration += song.getSongDuration();
+
+    if (totalDuration > 1200) {
+        System.out.println("Error: The total duration of the album cannot exceed 20 minutes.");
+        return;
     }
+
+    // Add the song to the album
+    if (song1 == null) song1 = song;
+    else if (song2 == null) song2 = song;
+    else if (song3 == null) song3 = song;
+    else song4 = song;
+
+    System.out.println("The song " + song.getSongName() + " has been added to the album " + albumName + ".");
+}
+//------------------------------------------------------------
+    //print song list
+    public void getSongList ()
+    {
+    System.out.println("Song List:");
+    System.out.println(song1.getName());
+    System.out.println(song2.getName());
+    System.out.println(song3.getName());
+    System.out.println(song4.getName());
+    }
+     // delete album
+    public void deleteAlbum() 
+    {
+        albumName = "No information added yet";
+        song1 = "No information yet";
+        song2 = "No information yet";
+        song3 = "No information yet";
+        song4 = "No information yet";
+        albumTime = 0;
+    }
+    //checking album total duration
+    public int getAlbumDuration() {
+    int totalDuration = 0;
+    if (song1 != null) {
+        totalDuration += song1.getSongDuration();
+    }
+    if (song2 != null) {
+        totalDuration += song2.getSongDuration();
+    }
+    if (song3 != null) {
+        totalDuration += song3.getSongDuration();
+    }
+    if (song4 != null) {
+        totalDuration += song4.getSongDuration();
+    }
+    return totalDuration;
+}
+    
+
     
 }
 
